@@ -48,7 +48,7 @@ r.DisplayInfo()  # Display metadata
 # Set up Writer
 w = openshot.FFmpegWriter("pythonExample.mp4")
 
-w.SetAudioOptions(True, "libmp3lame", r.info.sample_rate, r.info.channels, r.info.channel_layout, 128000)
+w.SetAudioOptions(True, "aac", r.info.sample_rate, r.info.channels, r.info.channel_layout, 128000)
 w.SetVideoOptions(True, "libx264", openshot.Fraction(30000, 1000), 1280, 720,
                   openshot.Fraction(1, 1), False, False, 3000000)
 
@@ -65,7 +65,7 @@ w.info.metadata["copyright"] = "copyright OpenShot!"
 w.Open()
 
 # Grab 30 frames from Reader and encode to Writer
-for frame in range(100):
+for frame in range(500):
     f = r.GetFrame(frame)
     w.WriteFrame(f)
 
